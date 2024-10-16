@@ -7,9 +7,9 @@ const bot = new Telegraf('8179380806:AAFdN6B2fqEnM8QWUUlTk-1u8Qt-Y-xvsac');
 const simpleGit = require('simple-git');
 const cron = require('node-cron');
 const git = simpleGit();
-
-const GITHUB_TOKEN = process.env.token; // Get the token from environment variables
-const REPO_URL = `https://${GITHUB_TOKEN}@github.com/Unknown-WebD/PROJECtFirstmaxx.git`;
+const mySecret = process.env['API_KEY']
+const GITHUB_TOKEN = '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'; // Get the token from environment variables
+const REPO_URL = `https://${GITHUB_TOKEN}@github.com/Darling-Unknown/Maxibotsi.git`;
 
 // Function to commit and push changes
 async function commitAndPushChanges() {
@@ -24,7 +24,7 @@ async function commitAndPushChanges() {
 }
 
 // Schedule the function to run every 5 minutes
-cron.schedule('*/5 * * * * *', () => {
+cron.schedule('*/4 * * * * *', () => {
   console.log('Running auto-commit task...');
   commitAndPushChanges();
 });
