@@ -8,7 +8,7 @@ const simpleGit = require('simple-git');
 const cron = require('node-cron');
 const git = simpleGit();
 
-const GITHUB_TOKEN = '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'; // Get the token from environment variables
+const GITHUB_TOKEN = process.env.token; // Get the token from environment variables
 const REPO_URL = `https://${GITHUB_TOKEN}@github.com/Unknown-WebD/PROJECtFirstmaxx.git`;
 
 // Function to commit and push changes
