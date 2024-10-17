@@ -41,7 +41,7 @@ exec('git config --global user.email "pauluchechukwudarlington@gmail.com"', (err
 });
 
 // Schedule the function to run every 5 minutes
-cron.schedule('*/5  * * * *', () => {
+cron.schedule('*/7 * * * * *', () => {
   console.log('Running auto-commit task...');
   commitAndPushChanges();
 });
