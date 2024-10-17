@@ -7,6 +7,7 @@ const bot = new Telegraf(mySecret1);
 const simpleGit = require('simple-git');
 const cron = require('node-cron');
 const git = simpleGit();
+const { exec } = require('child_process');
 const mySecret = process.env['API_KEY']
 const GITHUB_TOKEN = mySecret; // Get the token from environment variables
 
