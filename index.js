@@ -9,21 +9,23 @@ const cron = require('node-cron');
 const git = simpleGit();
 const mySecret = process.env['API_KEY']
 const GITHUB_TOKEN = mySecret; // Get the token from environment variables
+
+// Set GitHub repo URL using the token
 const REPO_URL = `https://${GITHUB_TOKEN}@github.com/Darling-Unknown/Maxibotsi.git`;
+
 // Function to commit and push changes
 async function commitAndPushChanges() {
   try {
     await git.add('./users.json'); // Add the users.json file
-    await git.commit('Auto-commit changes to users.json');
+    await git.commit('Auto-commit changes to users.json'); // Commit changes
     await git.push(REPO_URL, 'main'); // Push to the main branch
     console.log('Changes pushed to GitHub successfully.');
   } catch (error) {
     console.error('Error committing and pushing changes:', error);
   }
 }
-const { exec } = require('child_process');
 
-// Set Git config user details
+// Set Git config user details (run this once)
 exec('git config --global user.name "Darling-Unknown"', (error, stdout, stderr) => {
   if (error) {
     console.error(`Error setting user name: ${error}`);
@@ -40,8 +42,8 @@ exec('git config --global user.email "pauluchechukwudarlington@gmail.com"', (err
   console.log(`User email set: ${stdout}`);
 });
 
-// Schedule the function to run every 5 minutes
-cron.schedule('*/7 * * * * *', () => {
+// Schedule the function to run every 5 minutes (correct cron expression)
+cron.schedule('*/5 * * * *', () => {
   console.log('Running auto-commit task...');
   commitAndPushChanges();
 });
