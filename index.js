@@ -24,7 +24,7 @@ async function commitAndPushChanges() {
 const { exec } = require('child_process');
 
 // Set Git config user details
-exec('git config user.name "Darling-Unknown"', (error, stdout, stderr) => {
+exec('git config --global user.name "Darling-Unknown"', (error, stdout, stderr) => {
   if (error) {
     console.error(`Error setting user name: ${error}`);
     return;
@@ -32,7 +32,7 @@ exec('git config user.name "Darling-Unknown"', (error, stdout, stderr) => {
   console.log(`User name set: ${stdout}`);
 });
 
-exec('git config user.email "pauluchechukwudarlington@gmail.com"', (error, stdout, stderr) => {
+exec('git config --global user.email "pauluchechukwudarlington@gmail.com"', (error, stdout, stderr) => {
   if (error) {
     console.error(`Error setting user email: ${error}`);
     return;
