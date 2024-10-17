@@ -4,47 +4,6 @@ const fs = require('fs');
 const mySecret1 = process.env['BOT_API']
 // Initialize bot with your Telegram token
 const bot = new Telegraf(mySecret1);
-const simpleGit = require('simple-git');
-const cron = require('node-cron');
-const git = simpleGit();
-const mySecret = process.env['API_KEY']
-const GITHUB_TOKEN = mySecret; // Get the token from environment variables
-const REPO_URL = `https://${GITHUB_TOKEN}@github.com/Darling-Unknown/Maxibotsi.git`;
-// Function to commit and push changes
-async function commitAndPushChanges() {
-  try {
-    await git.add('./users.json'); // Add the users.json file
-    await git.commit('Auto-commit changes to users.json');
-    await git.push(REPO_URL, 'main'); // Push to the main branch
-    console.log('Changes pushed to GitHub successfully.');
-  } catch (error) {
-    console.error('Error committing and pushing changes:', error);
-  }
-}
-const { exec } = require('child_process');
-
-// Set Git config user details
-exec('git config user.name "Darling-Unknown"', (error, stdout, stderr) => {
-  if (error) {
-    console.error(`Error setting user name: ${error}`);
-    return;
-  }
-  console.log(`User name set: ${stdout}`);
-});
-
-exec('git config user.email "pauluchechukwudarlington@gmail.com"', (error, stdout, stderr) => {
-  if (error) {
-    console.error(`Error setting user email: ${error}`);
-    return;
-  }
-  console.log(`User email set: ${stdout}`);
-});
-
-// Schedule the function to run every 5 minutes
-cron.schedule('*/5 * * * * *', () => {
-  console.log('Running auto-commit task...');
-  commitAndPushChanges();
-});
 // Load user data
 let usersData = {};
 const usersFile = 'users.json';
