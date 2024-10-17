@@ -1,4 +1,8 @@
-Telegram token
+// Import necessary libraries
+const { Telegraf } = require('telegraf');
+const fs = require('fs');
+const mySecret1 = process.env['BOT_API']
+// Initialize bot with your Telegram token
 const bot = new Telegraf(mySecret1);
 // Load user data
 let usersData = {};
@@ -13,7 +17,7 @@ bot.command('me', (ctx) => {
     console.log(`User ID: ${ctx.from.id}`); // Log the user ID for debugging
     // Check if the user is the admin
     if (ctx.from.id == '6478320664') { // Replace with your actual admin chat ID
-        ctx.reply("Hey there Boss! What do you wanna do today 🫣",a {
+        ctx.reply("Hey there Boss! What do you wanna do today 🫣",{
             reply_markup: {
                 inline_keyboard: [
                     [{ text: 'Tasks upload', callback_data: 'tasks_upload' }],
